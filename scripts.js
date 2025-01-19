@@ -60,7 +60,12 @@ console.log(updatednames);
 
 console.log("");
 // Use reduce to transform the names array into an object mapping names to their respective provinces.
-const object1 = names.reduce((acc, Names , index) => acc[Names] = provinces[index])
+const object1 = names.reduce((acc, name, index) => {
+  //The corresponding province is found using the same index from the provinces array.
+  //Key-value pair is added to the acc object with the name as the key and the province as the value.
+  acc[name] = provinces[index]; // Map the name to the corresponding province by index
+  return acc;
+}, {});
 
 console.log(object1);
 
@@ -75,13 +80,13 @@ filteredproducts.forEach(element => console.log(element.product));
 
 console.log("");
 //Filtered out products without prices, convert string prices to numbers, and calculate the total price using reduce
-const var1 = products.filter(element => element.price && !isNaN(element.price)).map (item => Number(item.price)).reduce((acc,item) => acc + item.price, 0);
+const var1 = products.filter(item => item.price && !isNaN(Number(item.price))).reduce((acc,item) => acc + Number(item.price), 0);
 
 console.log(var1);
 
 console.log("");
  //Used reduce to concatenate all product names into a single string
- const var2 = products.reduce((acc, item) => acc + item.product + ',', 0);
+ const var2 = products.reduce((acc, item) => acc + item.product + ',', {});
 
  console.log(var2);
 
