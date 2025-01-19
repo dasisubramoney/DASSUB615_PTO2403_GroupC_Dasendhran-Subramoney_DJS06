@@ -101,6 +101,7 @@ console.log("");
   //Used Object.entries and reduce. Recreated the products object with keys 'name' and 'cost', maintaining their original values.
   const updatedProducts = products.map(product =>
     Object.entries(product).reduce((acc, [key, value]) => {
+      // Checks if the key is 'product' and replace it with 'name' and key is 'price' and replaces it with 'cost'
       const newKey = key === 'product' ? 'name' : key === 'price' ? 'cost' : key;
       acc[newKey] = value;
       return acc;
